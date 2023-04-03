@@ -1,32 +1,34 @@
-<div class="text-center text-6xl pt-3">Muscles & Exercises</div>
+<div class="h-full">
+    <div class="text-center text-6xl pt-3">Muscles & Exercises</div>
 
-<div class="flex align-center justify-center mt-3">
-    <button mat-raised-button 
-            color="accent"
-            routerLink="/exercises/create">
-        Agregar Ejercicio
-    </button>
-</div>
+    <div class="flex align-center justify-center mt-3">
+        <button mat-raised-button 
+                color="accent"
+                routerLink="/exercises/create">
+            Agregar Ejercicio
+        </button>
+    </div>
 
-<div class="grid grid-cols-1 md:grid-cols-2 gap-2 justify-stretch justify-items-center mt-3 mx-2 h-full">
-    <ng-container *ngFor="let exercise of exercises">        
-        <mat-card class="w-full h-full pb-3">
-            <mat-card-header>
-              <mat-card-title-group class="flex-col md:flex-row">                               
-                <mat-card-title>{{ exercise.title }}</mat-card-title>
-                <mat-card-subtitle>{{ exercise.description }}</mat-card-subtitle>     
-                <video *ngIf="exercise.fileUrl; else noVideo" controls width="300" height="300">
-                    <source [src]="exercise.fileUrl">
-                </video>
-                <ng-template #noVideo>
-                    <img mat-card-lg-image src="https://placehold.co/400" >
-                </ng-template>            
-              </mat-card-title-group>
-            </mat-card-header>
-            <mat-card-actions align="end">
-                <button mat-raised-button color="primary" (click)="fileInput.click()">Subir Demostración</button>
-                <input hidden (change)="onFileSelected($event, exercise)" #fileInput type="file" id="file">
-            </mat-card-actions>
-          </mat-card>
-    </ng-container>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-2 justify-stretch justify-items-center mt-3 mx-2">
+        <ng-container *ngFor="let exercise of exercises">        
+            <mat-card class="w-full h-full pb-3">
+                <mat-card-header>
+                <mat-card-title-group class="flex-col md:flex-row">                               
+                    <mat-card-title>{{ exercise.title }}</mat-card-title>
+                    <mat-card-subtitle>{{ exercise.description }}</mat-card-subtitle>     
+                    <video *ngIf="exercise.fileUrl; else noVideo" controls width="300" height="300">
+                        <source [src]="exercise.fileUrl">
+                    </video>
+                    <ng-template #noVideo>
+                        <img mat-card-lg-image src="https://placehold.co/400" >
+                    </ng-template>            
+                </mat-card-title-group>
+                </mat-card-header>
+                <mat-card-actions align="end">
+                    <button mat-raised-button color="primary" (click)="fileInput.click()">Subir Demostración</button>
+                    <input hidden (change)="onFileSelected($event, exercise)" #fileInput type="file" id="file">
+                </mat-card-actions>
+            </mat-card>
+        </ng-container>
+    </div>
 </div>
