@@ -8,19 +8,19 @@
     </button>
 </div>
 
-<div class="grid grid-cols-1 md:grid-cols-2 gap-2 justify-stretch justify-items-center mt-3 mx-2">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-2 justify-stretch justify-items-center mt-3 mx-2 h-full">
     <ng-container *ngFor="let exercise of exercises">        
         <mat-card class="w-full h-full pb-3">
             <mat-card-header>
-              <mat-card-title-group>
+              <mat-card-title-group class="flex-col md:flex-row">                               
+                <mat-card-title>{{ exercise.title }}</mat-card-title>
+                <mat-card-subtitle>{{ exercise.description }}</mat-card-subtitle>     
                 <video *ngIf="exercise.fileUrl; else noVideo" controls width="300" height="300">
                     <source [src]="exercise.fileUrl">
                 </video>
                 <ng-template #noVideo>
                     <img mat-card-lg-image src="https://placehold.co/400" >
-                </ng-template>                
-                <mat-card-title>{{ exercise.title }}</mat-card-title>
-                <mat-card-subtitle>{{ exercise.description }}</mat-card-subtitle>                
+                </ng-template>            
               </mat-card-title-group>
             </mat-card-header>
             <mat-card-actions align="end">
