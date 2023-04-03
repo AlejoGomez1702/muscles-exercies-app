@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ListAllExercisesComponent } from './pages/list-all-exercises/list-all-exercises.component';
+import { CreateExerciseComponent } from './pages/create-exercise/create-exercise.component';
 
 const routes: Routes = [
   {
@@ -9,6 +10,10 @@ const routes: Routes = [
       {
         path: 'all',
         component: ListAllExercisesComponent
+      },
+      {
+        path: 'create',
+        component: CreateExerciseComponent
       }
     ]
   }
